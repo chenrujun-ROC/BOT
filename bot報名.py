@@ -11,30 +11,20 @@ bot = commands.Bot(command_prefix='[')
 async def on_ready():
     print("Bot is online")
 
-@bot.event
-async def on_member_join(member):
-    channel = bot.get_channel(int(jdata['一般_channel']))
-    await channel.send(f'{member}Join!')
-
-@bot.event
-async def on_member_remove(member):
-    channel = bot.get_channel(int(jdata['一般_channel']))
-    await channel.send(f'{member}Leave!') 
+@commands.command()
+async def load(ctx, Extension):
+    bot.load_extension(f'cmds.{Extension}')
+    await ctx.send(f'Loaded {Extension} done.')
 
 @commands.command()
-async def load(ctx, extension):
-    bot.load_extension(f'cmds.{extension}')
-    await ctx.send(f'Loaded {extension} dene.')
+async def unload(ctx, Extension):
+    bot.unload_extension(f'cmds.{Extension}')
+    await ctx.send(f'Un-Loaded {Extension} done.')
 
 @commands.command()
-async def unload(ctx, extension):
-    bot.unload_extension(f'cmds.{extension}')
-    await ctx.send(f'Un-Loaded {extension} dene.')
-
-@commands.command()
-async def reload(ctx, extension):
-    bot.reload_extension(f'cmds.{extension}')
-    await ctx.send(f'RE-Loaded {extension} dene.')
+async def reload(ctx, Extension):
+    bot.reload_extension(f'cmds.{Extension}')
+    await ctx.send(f'RE-Loaded {Extension} done.')
 
 
 for filename in os.listdir('./cmds'):

@@ -1,8 +1,8 @@
 import discord
+from discord import message
 from discord.ext import commands
-from datetime import datetime, timezone, timedelta
 from core.classes import Cog_Extension
-
+from datetime import datetime, timezone, timedelta
 
 time = timezone(timedelta(hours=+8))                                                                    #設定時間變數
 class Help(Cog_Extension):
@@ -23,6 +23,8 @@ class Help(Cog_Extension):
         embed.add_field(name="社團", value="https://www.facebook.com/groups/NTUCYCLUB", inline=False)   #社團連結    
         embed.add_field(name="Strava", value="https://www.facebook.com/ntucyc/", inline=False)          #路線連結
         await ctx.send(embed=embed)                                                                     #inline true or false影響排版
+
+        
 
 def setup(bot):
     bot.add_cog(Help(bot))

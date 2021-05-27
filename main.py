@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from classes import Cog_Extension
+from classes import Cog_Extension 
 
 class Main(Cog_Extension):
     
@@ -15,6 +15,8 @@ class Main(Cog_Extension):
 
 def setup(bot):
     bot.add_cog(Main(bot))
+
+
 
 
    
